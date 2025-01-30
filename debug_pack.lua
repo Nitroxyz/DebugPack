@@ -1,4 +1,4 @@
--- Version 1.1.0
+-- Version 2.0.0
 
 local debug = {
     x = -0.7,   -- recommended x value
@@ -84,7 +84,7 @@ function debug.print_on_change(id, value, output)
     prev_val[id] = value
 end
 
--- TODO: Make strings be normal
+
 function debug.print_if(check, output)
     if check then
         if type(output) == "string" then
