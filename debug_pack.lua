@@ -1,4 +1,4 @@
--- Version 1.1.2
+-- Version 1.1.0
 
 local debug = {
     x = -0.7,   -- recommended x value
@@ -71,19 +71,27 @@ function debug.draw_key(id, ex, yai, delta, thingies)
     end, ON.GUIFRAME)
 end
 
-function debug.print_on_change(id, value)
+function debug.print_on_change(id, value, output)
     if prev_val[id] then
         if prev_val[id] ~= value then
-            prinspect(value)
+            if type(output) == "string" then
+                print(output)
+            else
+                prinspect(output)
+            end
         end
     end
     prev_val[id] = value
 end
 
 -- TODO: Make strings be normal
-function debug.print_if(check, value)
+function debug.print_if(check, output)
     if check then
-        prinspect(value)
+        if type(output) == "string" then
+            print(output)
+        else
+            prinspect(output)
+        end
     end
 end
 
@@ -96,7 +104,15 @@ function debug.q.draw_hash(id, things)
 end
 
 function debug.q.draw_key(id, things)
-    debug.draw_key(id, debug.x, debug.y, debug.d, things)
+    debug.draw_key(id, debug.k, debug.y, debug.d, things)
+end
+
+function debug.q.print_on_change(id, value)
+    debug.print_on_change(id, value, value)
+end
+
+function debug.q.print_if(check, output)
+    debug.print_if(check, output)
 end
 
 return debug
