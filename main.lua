@@ -1,6 +1,6 @@
 meta = {
     name = "DebugPack",
-    version = "2.1.1",
+    version = "3.0.0",
     author = "Nitroxy",
     description = "Debug extention",
     online_safe = true
@@ -13,5 +13,12 @@ exports = debug
 --[[ Changes:
 debug.active:
 - When false, all prints get disabled
-- added q.draw_list
+function additions:
+- added q.draw_list()
+- added better_print()
+- added print_once()
+- added reverse_enum()
+misc:
+- added once (table)
+- added readme.txt
 ]]
